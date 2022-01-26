@@ -2,7 +2,6 @@ nltk
 tqdm
 spacy
 numpy
-torch==1.7.1
-transformers==4.5.0
+transformers==4.11.3
 tensorboardX
 sentencepiece
