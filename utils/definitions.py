@@ -22,7 +22,7 @@
    limitations under the License.
 """
 
-ALL_DOMAINS = ["attraction", "hotel", "restaurant", "taxi", "train", "hospital", "police"]
+ALL_DOMAINS = ["attraction", "hotel", "restaurant", "taxi", "train", "hospital", "police", "facility", "people"]
 
 NORMALIZE_SLOT_NAMES = {
     "car type": "car",
@@ -41,11 +41,13 @@ REQUESTABLE_SLOTS = {
               "type", "pricerange", "stars", "area", "reference"],
     "attraction": ["price", "type", "address", "postcode", "phone", "area", "reference"],
     "train": ["time", "leave", "price", "arrive", "id", "reference"],
-    "restaurant": ["phone", "postcode", "address", "pricerange", "food", "area", "reference"]
+    "restaurant": ["phone", "postcode", "address", "pricerange", "food", "area", "reference"],
+    "facility": ["address"],
+    "people": ["address", "email"]
 }
 
 ALL_REQSLOT = ["car", "address", "postcode", "phone", "internet", "parking", "type", "pricerange", "food",
-                      "stars", "area", "reference", "time", "leave", "price", "arrive", "id"]
+                      "stars", "area", "reference", "time", "leave", "price", "arrive", "id", "email"]
 
 INFORMABLE_SLOTS = {
     "taxi": ["leave", "destination", "departure", "arrive"],
@@ -54,7 +56,9 @@ INFORMABLE_SLOTS = {
     "hotel": ["type", "parking", "pricerange", "internet", "stay", "day", "people", "area", "stars", "name"],
     "attraction": ["area", "type", "name"],
     "train": ["destination", "day", "arrive", "departure", "people", "leave"],
-    "restaurant": ["food", "pricerange", "area", "name", "time", "day", "people"]
+    "restaurant": ["food", "pricerange", "area", "name", "time", "day", "people"],
+    "facility": ["type"],
+    "people": ["type", "name"]
 }
 
 ALL_INFSLOT = ["type", "parking", "pricerange", "internet", "stay", "day", "people", "area", "stars", "name",
@@ -81,6 +85,8 @@ DIALOG_ACTS = {
     'police': ['inform', 'request'],
     'hospital': ['inform', 'request'],
     'general': ['bye', 'greet', 'reqmore', 'welcome'],
+    'facility': ['inform', 'request'],
+    "people": ['inform', 'request']
 }
 
 BOS_USER_TOKEN = "<bos_user>"
