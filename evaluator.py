@@ -471,20 +471,23 @@ class MultiWozEvaluator(object):
         The dialogue is successful if that's the case for all domains.
         """
         # HARD EVAL
-        stats = {'restaurant': [0, 0, 0],
-                'hotel': [0, 0, 0],
-                'attraction': [0, 0, 0],
-                'train': [0, 0, 0],
-                'taxi': [0, 0, 0],
-                'hospital': [0, 0, 0],
-                'police': [0, 0, 0]}
-
+        stats = {
+                    'restaurant': [0, 0, 0],
+                    'hotel': [0, 0, 0],
+                    'attraction': [0, 0, 0],
+                    'train': [0, 0, 0],
+                    'taxi': [0, 0, 0],
+                    'hospital': [0, 0, 0],
+                    'police': [0, 0, 0],
+                    'facility': [0, 0, 0],
+                    'people': [0, 0, 0]
+                 }
         match = 0
         success = 0
         # MATCH
         for domain in goal.keys():
             match_stat = 0
-            if domain in ['restaurant', 'hotel', 'attraction', 'train']:
+            if domain in ['restaurant', 'hotel', 'attraction', 'train', 'facility', 'people']:
                 goal_venues = self.reader.db.queryJsons(
                     domain, goal[domain]['informable'], return_name=True)
                 if type(venue_offered[domain]) is str and \
