@@ -42,7 +42,7 @@ class MultiWozDB:
             self.dbs[domain] = load_json(os.path.join(db_dir,
                                                       "{}_db_processed.json".format(domain)))
 
-        self.db_domains = ["attraction", "hotel", "restaurant", "train"]
+        self.db_domains = ["attraction", "hotel", "restaurant", "train", "facility", "people"]
 
         extractive_ontology = {}
         for db_domain in self.db_domains:

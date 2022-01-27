@@ -206,6 +206,8 @@ class Preprocessor(object):
             'attraction': ['id', 'location', 'pricerange', 'price', 'openhours', 'postcode', 'phone'],
             'train': ['price', 'id'],
             'restaurant': ['id', 'location', 'introduction', 'signature', 'type', 'postcode', 'phone'],
+            'facility': [],
+            "people": []
         }
         entity_value_to_slot = {}
         ambiguous_entities = []
