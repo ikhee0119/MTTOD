@@ -454,6 +454,8 @@ class MultiWOZRunner(BaseRunner):
         reporter = Reporter(1000000, self.cfg.model_dir)
 
         torch.set_grad_enabled(False)
+        step_outputs = None
+
         for batch in tqdm(dev_iterator, total=num_steps, desc="Validaction"):
             start_time = time.time()
 
