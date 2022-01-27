@@ -34,7 +34,7 @@ from utils import definitions
 logger = logging.getLogger(__name__)
 
 
-def clean_text(text, mapping_pair=None):
+def clean_text(text, mapping_pair=None, domain=None):
     text = text.strip()
     text = text.lower()
 
@@ -80,9 +80,10 @@ def clean_text(text, mapping_pair=None):
     for tmpl, good in baddata.items():
         text = re.sub(tmpl, good, text)
 
-    text = re.sub(r'([a-zT]+)\.([a-z])', r'\1 . \2',
-                  text)   # 'abc.xyz' -> 'abc . xyz'
-    text = re.sub(r'(\w+)\.\.? ', r'\1 . ', text)   # if 'abc. ' -> 'abc . '
+    if domain is None or domain != "people":
+        text = re.sub(r'([a-zT]+)\.([a-z])', r'\1 . \2',
+                      text)   # 'abc.xyz' -> 'abc . xyz'
+        text = re.sub(r'(\w+)\.\.? ', r'\1 . ', text)   # if 'abc. ' -> 'abc . '
 
     if mapping_pair is not None:
         for (fromx, tox) in mapping_pair:
@@ -107,7 +108,7 @@ def clean_time(utter):
 
 
 def clean_slot_values(domain, slot, value, mapping_pair=None):
-    value = clean_text(value, mapping_pair)
+    value = clean_text(value, mapping_pair, domain)
     if not value:
         value = ''
     elif value == 'not mentioned':
